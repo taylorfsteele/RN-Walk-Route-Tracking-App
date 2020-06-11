@@ -12,7 +12,6 @@ const TrackForm = () => {
     changeName,
   } = useContext(LocationContext);
 
-  console.log(locations.length);
   return (
     <View style={styles.container}>
       <Input

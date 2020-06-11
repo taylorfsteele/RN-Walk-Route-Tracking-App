@@ -14,7 +14,6 @@ const TrackCreateScreen = () => {
   const isFocused = useIsFocused();
   const { addLocation, state } = useContext(LocationContext);
   const [errorMessage] = useLocation(isFocused, addLocation);
-  console.log(state.recording);
 
   return (
     <SafeAreaView>
