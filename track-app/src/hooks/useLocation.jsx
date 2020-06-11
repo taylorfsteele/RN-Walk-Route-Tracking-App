@@ -3,7 +3,6 @@ import { requestPermissionsAsync, watchPositionAsync, Accuracy } from "expo-loca
 
 export default (shouldTrack, callbackFunction) => {
   const [errorMessage, setErrorMessage] = useState(null);
-  //const [subscriber, setSubscriber] = useState(null);
 
   useEffect(() => {
     let subscriber;
@@ -11,13 +10,8 @@ export default (shouldTrack, callbackFunction) => {
       try {
         const { granted } = await requestPermissionsAsync();
         if (!granted) throw new Error("Location permission not granted");
-
         subscriber = await watchPositionAsync(
-          {
-            accuracy: Accuracy.BestForNavigation,
-            timeInterval: 1000,
-            distanceInterval: 10,
-          },
+          { accuracy: Accuracy.BestForNavigation, timeInterval: 1000, distanceInterval: 10 },
           callbackFunction,
         );
       } catch (error) {
@@ -36,9 +30,10 @@ export default (shouldTrack, callbackFunction) => {
     return () => {
       if (subscriber) {
         subscriber.remove();
+        console.count("UnSub");
       }
     };
-  }, [shouldTrack, callbackFunction]);
+  }, [shouldTrack]);
 
   return [errorMessage];
 

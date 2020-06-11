@@ -5,26 +5,21 @@ import { Spacing } from "../styles";
 import { Context as LocationContext } from "../context/LocationContext";
 
 const TrackForm = () => {
-  const {
-    state: { name, recording, locations },
-    startRecording,
-    stopRecording,
-    changeName,
-  } = useContext(LocationContext);
+  const { startRecording } = useContext(LocationContext);
 
   return (
     <View style={styles.container}>
       <Input
-        value={name}
-        onChangeText={changeName}
+        //value={name}
+        //onChangeText={changeName}
         placeholder="Enter Track Name"
         containerStyle={styles.input}
       />
-      {recording ? (
+      {/* {recording ? (
         <Button title="Stop" onPress={stopRecording} />
       ) : (
         <Button title="Start" onPress={startRecording} />
-      )}
+      )} */}
     </View>
   );
 };
