@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "emulator": "emulator @Pixel_2_API_29"
+    "emulator": "emulator @Pixel_2_API_29",
+    "server": "(cd .. & cd track-server) & npm run dev"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.6",
@@ -24,7 +25,9 @@
     "react-native-reanimated": "~1.7.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-native-maps": "0.26.1",
+    "expo-location": "~8.1.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",
