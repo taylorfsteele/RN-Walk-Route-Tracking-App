@@ -1,11 +1,21 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+//import "../_mockLocation";
+import React, { useContext } from "react";
+import { StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Text } from "react-native-elements";
+import Map from "../Components/Map";
+import TrackForm from "../Components/TrackForm";
+import { ScrollView } from "react-native-gesture-handler";
 
 const TrackCreateScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>TrackCreateScreen</Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <Text h2>Create a Track</Text>
+        <Map />
+        <TrackForm />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
