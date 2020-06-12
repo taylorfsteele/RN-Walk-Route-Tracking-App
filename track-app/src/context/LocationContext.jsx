@@ -6,7 +6,7 @@ const locationReducer = (state, action) => {
       if (state.recording)
         return {
           ...state,
-          locations: [...state.locations, action.location],
+          locations: [...state.locations, action.payload],
           currentLocation: action.payload,
         };
       return { ...state, currentLocation: action.payload };

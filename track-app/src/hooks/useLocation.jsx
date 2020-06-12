@@ -18,20 +18,14 @@ export default (shouldTrack, callbackFunction) => {
         setErrorMessage(error);
       }
     };
-    if (shouldTrack) {
-      startWatching();
-    } else {
-      if (subscriber) {
-        subscriber.remove();
-      }
+    if (shouldTrack) startWatching();
+    else {
+      if (subscriber) subscriber.remove();
       subscriber = null;
     }
 
     return () => {
-      if (subscriber) {
-        subscriber.remove();
-        console.count("UnSub");
-      }
+      if (subscriber) subscriber.remove();
     };
   }, [shouldTrack]);
 

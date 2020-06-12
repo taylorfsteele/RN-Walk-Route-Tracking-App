@@ -8,7 +8,6 @@ import TrackForm from "../Components/TrackForm";
 import { ScrollView } from "react-native-gesture-handler";
 
 const TrackCreateScreen = () => {
-  console.count("TrackCreateScreen");
   return (
     <SafeAreaView>
       <ScrollView>

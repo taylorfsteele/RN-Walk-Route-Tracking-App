@@ -10,9 +10,9 @@ const Map = () => {
   const isFocused = useIsFocused();
   const {
     addLocation,
-    state: { currentLocation },
+    state: { currentLocation, recording, locations },
   } = useContext(LocationContext);
-  const [errorMessage] = useLocation(isFocused, addLocation);
+  const [errorMessage] = useLocation(isFocused || recording, addLocation);
 
   if (!currentLocation) return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
 
@@ -28,6 +28,7 @@ const Map = () => {
           strokeColor="rgba(158, 158, 255, 1.0)"
           fillColor="rgba(158, 158, 255, 0.3)"
         />
+        <Polyline coordinates={locations.map((geo) => geo.coords)} />
       </MapView>
       {errorMessage ? <Text>Please enable location permissions</Text> : null}
     </>
