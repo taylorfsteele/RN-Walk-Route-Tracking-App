@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { StyleSheet, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
+import { StyleSheet, KeyboardAvoidingView, ScrollView, Platform, Text } from "react-native";
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../Components/AuthForm";
 import NavLink from "../Components/NavLink";
