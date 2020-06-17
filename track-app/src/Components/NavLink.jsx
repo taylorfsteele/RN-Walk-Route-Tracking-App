@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { Spacing } from "../styles";
+import { Spacing, Colors } from "../styles";
 
 const NavLink = ({ title, routeName }) => {
   const navigation = useNavigation();
@@ -10,6 +10,7 @@ const NavLink = ({ title, routeName }) => {
   return (
     <Button
       buttonStyle={styles.button}
+      titleStyle={{ color: Colors.primary }}
       title={title}
       type="clear"
       onPress={() => navigation.navigate(routeName)}

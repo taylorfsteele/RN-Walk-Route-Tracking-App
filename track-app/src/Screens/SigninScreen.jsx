@@ -21,7 +21,7 @@ const SigninScreen = ({ navigation }) => {
     >
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
         <AuthForm
-          headerText="Sign In to Tracker"
+          headerText="Sign In to Tracker Demo"
           submitButtonText="Sign In"
           errorMessage={state.errorMessage}
           //This is equivalent to ({ email, password}) => signin({ email, password })

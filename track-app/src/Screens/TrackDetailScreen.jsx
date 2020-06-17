@@ -1,16 +1,22 @@
-import React, { useContext } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import React, { useContext, useLayoutEffect } from "react";
+import { StyleSheet, View } from "react-native";
 import { Context as TrackContext } from "../context/TrackContext";
 import MapView, { Polyline } from "react-native-maps";
+import { Button } from "react-native-elements";
+import { Spacing } from "../styles";
 
 const TrackDetailScreen = ({ navigation, route }) => {
   const { state } = useContext(TrackContext);
   const _id = route.params._id;
   const track = state.find((track) => track._id === _id);
   const initialCoords = track.locations[0].coords;
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ headerTitle: track.name });
+  }, [navigation, route]);
+
   return (
     <>
-      <Text>{track.name}</Text>
       <MapView
         style={styles.map}
         initialRegion={{
@@ -21,6 +27,9 @@ const TrackDetailScreen = ({ navigation, route }) => {
       >
         <Polyline coordinates={track.locations.map((geo) => geo.coords)} />
       </MapView>
+      <View style={styles.container}>
+        <Button title="Delete Track" disabled />
+      </View>
     </>
   );
 };
@@ -30,9 +39,7 @@ const styles = StyleSheet.create({
     height: 300,
   },
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    ...Spacing.baseMargin,
   },
 });
 

@@ -32,7 +32,15 @@ const TrackListScreen = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => navigation.navigate("TrackDetail", { _id: item._id })}>
-              <ListItem chevron title={item.name} />
+              <ListItem
+                chevron
+                title={item.name}
+                containerStyle={{
+                  marginHorizontal: 8,
+                  marginVertical: 8,
+                  borderRadius: 8,
+                }}
+              />
             </TouchableOpacity>
           );
         }}

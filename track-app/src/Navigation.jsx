@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useContext } from "react";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AccountScreen from "./Screens/AccountScreen";
@@ -13,28 +12,61 @@ import SplashScreen from "./Screens/SplashScreen";
 import { Context as AuthContext } from "./context/AuthContext";
 import { navigationRef } from "./RootNavigation";
 import { Feather } from "@expo/vector-icons";
+import { Colors } from "./styles";
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: Colors.primary,
+  },
+};
+
+const screenOptions = {
+  headerStyle: { backgroundColor: Colors.primary },
+  headerTintColor: Colors.tint,
+  headerTitleStyle: {
+    fontWeight: "bold",
+  },
+};
 
 const TrackListStack = createStackNavigator();
-
-function TrackListStackScreens() {
+const TrackListStackScreens = () => {
   return (
-    <TrackListStack.Navigator initialRouteName={"Track List"}>
+    <TrackListStack.Navigator initialRouteName={"Track List"} screenOptions={screenOptions}>
       <TrackListStack.Screen
         name="TrackList"
         component={TrackListScreen}
-        options={{ title: "Saved Tracks" }}
+        options={{
+          title: "Saved Tracks",
+        }}
       />
-      <TrackListStack.Screen
-        name="TrackDetail"
-        component={TrackDetailScreen}
-        options={{ title: "" }}
-      />
+      <TrackListStack.Screen name="TrackDetail" component={TrackDetailScreen} />
     </TrackListStack.Navigator>
   );
-}
+};
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+
+const CreateStack = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Record Track" component={TrackCreateScreen} />
+    </Stack.Navigator>
+  );
+};
+const AccountStack = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="AccountStack"
+        component={AccountScreen}
+        options={{ headerTitle: "Account" }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const Navigation = () => {
   const { state } = useContext(AuthContext);
@@ -44,7 +76,7 @@ const Navigation = () => {
   // }
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer theme={MyTheme} ref={navigationRef}>
       {state.token ? (
         <Tab.Navigator initialRouteName={"TrackListStack"}>
           <Tab.Screen
@@ -57,7 +89,7 @@ const Navigation = () => {
           />
           <Tab.Screen
             name="CreateTrack"
-            component={TrackCreateScreen}
+            component={CreateStack}
             options={{
               tabBarLabel: "Record Track",
               tabBarIcon: ({ color, size }) => <Feather name="map-pin" color={color} size={size} />,
@@ -65,7 +97,7 @@ const Navigation = () => {
           />
           <Tab.Screen
             name="Account"
-            component={AccountScreen}
+            component={AccountStack}
             options={{
               tabBarLabel: "Account",
               tabBarIcon: ({ color, size }) => <Feather name="user" color={color} size={size} />,
