@@ -1,28 +1,24 @@
 {
   "expo": {
-    "name": "tracks-app",
-    "slug": "tracks-app",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "Tracker Demo App",
+    "slug": "tracker-demo-app",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#3d5af1"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "This is a demo application for React Native that creates a line overlay on a map that shows the route you've walked, biked, or drove. NodeJs and Express Backend, MongoDB database.",
+    "githubUrl": "https://github.com/taylorfsteele/RN-Walk-Route-Tracking-App"
   }
 }
