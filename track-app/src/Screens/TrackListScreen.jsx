@@ -1,5 +1,13 @@
 import React, { useContext, useCallback } from "react";
-import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { ListItem } from "react-native-elements";
 import { Context as TrackContext } from "../context/TrackContext";
 import { useFocusEffect } from "@react-navigation/native";
@@ -14,6 +22,8 @@ const TrackListScreen = ({ navigation }) => {
     }, []),
   );
 
+  if (!state.length) return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
+
   return (
     <>
       <FlatList
@@ -22,7 +32,15 @@ const TrackListScreen = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => navigation.navigate("TrackDetail", { _id: item._id })}>
-              <ListItem chevron title={item.name} />
+              <ListItem
+                chevron
+                title={item.name}
+                containerStyle={{
+                  marginHorizontal: 8,
+                  marginVertical: 8,
+                  borderRadius: 8,
+                }}
+              />
             </TouchableOpacity>
           );
         }}

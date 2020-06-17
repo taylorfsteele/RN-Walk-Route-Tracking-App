@@ -1,8 +1,10 @@
 import axios from "axios";
 import { AsyncStorage } from "react-native";
+import Constants from "expo-constants";
+const url = Constants.manifest.extra.herokuUrl;
 
 const instance = axios.create({
-  baseURL: "http://10.0.2.2:3000",
+  baseURL: url,
 });
 
 instance.interceptors.request.use(

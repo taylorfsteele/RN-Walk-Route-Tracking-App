@@ -23,7 +23,7 @@ const SignupScreen = ({ navigation }) => {
     >
       <ScrollView contentContainerStyle={styles.container}>
         <AuthForm
-          headerText="Sign Up for Tracker"
+          headerText="Sign Up for Tracker Demo"
           submitButtonText="Sign Up"
           errorMessage={state.errorMessage}
           //This is equivalent to ({ email, password}) => signup({ email, password })
