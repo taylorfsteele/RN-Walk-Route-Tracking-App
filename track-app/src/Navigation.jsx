@@ -39,9 +39,9 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   const { state } = useContext(AuthContext);
 
-  if (state.isLoading) {
-    return <SplashScreen />;
-  }
+  // if (state.isLoading) {
+  //   return <SplashScreen />;
+  // }
 
   return (
     <NavigationContainer ref={navigationRef}>
