@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Input, Button } from "react-native-elements";
 import { View, Text, StyleSheet } from "react-native";
-import { Spacing } from "../styles";
+import { Spacing, Colors } from "../styles";
 import { Context as LocationContext } from "../context/LocationContext";
 import useSaveTrack from "../hooks/useSaveTrack";
 
@@ -23,12 +23,12 @@ const TrackForm = () => {
         containerStyle={styles.input}
       />
       {recording ? (
-        <Button containerStyle={styles.button} title="Stop" onPress={stopRecording} />
+        <Button buttonStyle={styles.button} title="Stop" onPress={stopRecording} />
       ) : (
-        <Button containerStyle={styles.button} title="Start" onPress={startRecording} />
+        <Button buttonStyle={styles.button} title="Start" onPress={startRecording} />
       )}
       {!recording && locations.length ? (
-        <Button onPress={saveTrack} containerStyle={styles.button} title="Save Recording" />
+        <Button onPress={saveTrack} buttonStyle={styles.button} title="Save Recording" />
       ) : null}
     </View>
   );
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     ...Spacing.baseMargin,
   },
   input: {},
-  button: { marginBottom: 16 },
+  button: { marginBottom: 16, backgroundColor: Colors.primary },
 });
 
 export default TrackForm;

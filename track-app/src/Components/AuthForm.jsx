@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { StyleSheet } from "react-native";
 import { Text, Button, Input } from "react-native-elements";
-import { Spacing } from "../styles";
+import { Spacing, Colors } from "../styles";
 
 const AuthForm = ({ headerText, submitButtonText, errorMessage, onSubmit }) => {
   const [email, setEmail] = useState("");
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   },
   button: {
     ...Spacing.baseMargin,
+    backgroundColor: Colors.primary,
   },
   errorMessage: {
     color: "red",

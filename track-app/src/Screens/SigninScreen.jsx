@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { StyleSheet, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
+import { StyleSheet, KeyboardAvoidingView, ScrollView, Platform, Text } from "react-native";
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../Components/AuthForm";
 import NavLink from "../Components/NavLink";
@@ -21,7 +21,7 @@ const SigninScreen = ({ navigation }) => {
     >
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
         <AuthForm
-          headerText="Sign In to Tracker"
+          headerText="Sign In to Tracker Demo"
           submitButtonText="Sign In"
           errorMessage={state.errorMessage}
           //This is equivalent to ({ email, password}) => signin({ email, password })
